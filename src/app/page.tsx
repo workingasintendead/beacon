@@ -19,6 +19,7 @@ export default function Home() {
               src/app/page.tsx
             </code>
             .
+            <br>Testing the CI/CD pipeline</br>
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
