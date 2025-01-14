@@ -17,6 +17,7 @@ export default function TransactionTile({ transactionId }: { transactionId: stri
     return (
         <div>
             <h1>Transaction</h1>
+            <p>{transactionId}</p>
         </div>
     )
 }
