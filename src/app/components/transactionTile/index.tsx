@@ -18,6 +18,7 @@ export default function TransactionTile({ transactionId }: { transactionId: stri
         <div>
             <h1>Transaction</h1>
             <p>{transactionId}</p>
+            <div>{JSON.stringify(data)}</div>
         </div>
     )
 }
