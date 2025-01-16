@@ -12,7 +12,7 @@ export default function TransactionTile({ transactionId }: { transactionId: stri
     useEffect(() => {
         const response = transactionResponse(transactionId)
         setData(response)
-    })
+    }, [])
     return (
         <>
             <h1>Transaction</h1>

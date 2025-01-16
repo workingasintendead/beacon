@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="container">
       <input type="text" placeholder="Search" />
-      {listOfTransactionIds.map(id => <TransactionTile transactionId={id} />)}
+      {listOfTransactionIds.map(id => <TransactionTile key={id} transactionId={id} />)}
     </div>
   );
 }
