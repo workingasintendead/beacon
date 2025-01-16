@@ -15,9 +15,19 @@ export default function TransactionTile({ transactionId }: { transactionId: stri
     }, [])
     return (
         <>
-            <h1>Transaction</h1>
+            <h1 className="font-bold">Transaction</h1>
             {data ? <>
                 <div>{data.text}</div>
+                <div><span className="font-semibold">Slot: </span>{data.slot}</div>
+                <div><span className="font-semibold">MinBid: </span>{data.minBid.gold}g {data.minBid.silver} silver {data.minBid.copper} copper</div>
+                    <h3 className="font-semibold">Stats:</h3>
+                    <ul className="mb-4">
+                        {data.metaData.map((meta, index) => (
+                            <li key={index}>
+                                {meta.name}: {meta.value}
+                            </li>
+                        ))}
+                    </ul>
                 </> : null}
         </>
     )
