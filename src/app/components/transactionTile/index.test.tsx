@@ -6,35 +6,20 @@ import transactionResponse from '@/tests/mocks/transactionStub'
 const getTransactionFromStubs = () => {
     return transactionResponse("5f4b1f3b-4b7b-4b1b-8e0e-4f1b1b1b1b1b")
 }
-jest.mock('node-fetch', () => ({
-    __esModule: true,
-    default: jest.fn(() => Promise.resolve({
-        json: () => Promise.resolve(getTransactionFromStubs())
-    }))
-}))
 
-it('renders the transaction component', async () => {
-    const transactionId = getTransactionFromStubs()?.transactionId
-    await act(async () => {
-        render(<TransactionTile transactionId={transactionId}/>)
-    })
-    expect(screen.getByText('Transaction')).toBeInTheDocument()
-})
+describe('transactionTile', () => {
+    it('renders the transaction component', async () => {
+        const transactionId = getTransactionFromStubs()?.transactionId
 
-it('fetches and displays transaction data', async () => {
-    const transactionId = getTransactionFromStubs()?.transactionId
-    await act(async () => {
-        render(<TransactionTile transactionId={transactionId}/>)
-    })
-    // Add more assertions based on the fetched data
-    expect(screen.getByText('Transaction')).toBeInTheDocument()
-    // Example: expect(screen.getByText('Some Transaction Detail')).toBeInTheDocument()
-})
+        render(<TransactionTile transactionId={transactionId} />)
 
-it('handles missing transactionId', async () => {
-    await act(async () => {
-        render(<TransactionTile transactionId={''}/>)
+        expect(screen.getByText('Transaction')).toBeInTheDocument()
     })
-    expect(screen.getByText('Transaction')).toBeInTheDocument()
-    // Add more assertions to handle missing transactionId case
+
+    it('fetches and displays description', async () => {
+        const transactionId = getTransactionFromStubs()?.transactionId
+        render(<TransactionTile transactionId={transactionId} />)
+
+        expect(await screen.findByText(getTransactionFromStubs().text)).toBeInTheDocument();
+    })
 })

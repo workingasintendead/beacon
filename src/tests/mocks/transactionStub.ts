@@ -4,6 +4,10 @@ export default function transactionResponse(transactionId: string | undefined): 
     return transactionStubs.find(transaction => transaction.transactionId === transactionId) ?? transactionStubs[0];
 }
 
+export function transactionList(): Transaction[] {
+    return transactionStubs;
+}
+
 const transactionStubs: Transaction[] = [
     {
         "transactionId": "5f4b1f3b-4b7b-4b1b-8e0e-4f1b1b1b1b1b",
