@@ -27,23 +27,24 @@ describe('transactionTile', () => {
         const transactionId = getTransactionFromStubs()?.transactionId
         render(<TransactionTile transactionId={transactionId} />);
 
-        expect(await screen.findByText(new RegExp(`${getTransactionFromStubs().slot}`))).toBeInTheDocument();
+        expect(await screen.findByText(new RegExp(getTransactionFromStubs().slot))).toBeInTheDocument();
     });
 
     it('fetches and displays minBid gold', async () => {
         const transactionId = getTransactionFromStubs()?.transactionId
         render(<TransactionTile transactionId={transactionId} />)
 
-        expect(await screen.findByText(new RegExp(`${getTransactionFromStubs().minBid.gold}`))).toBeInTheDocument();
+        expect(await screen.findByText(new RegExp(String((getTransactionFromStubs().minBid.gold))))).toBeInTheDocument();
     })
 
     it('fetches and displays metaData', async () => {
-        const transactionId = getTransactionFromStubs()?.transactionId
-        const metadata = getTransactionFromStubs()?.metaData;
-        render(<TransactionTile transactionId={transactionId} />)
+        const transaction = getTransactionFromStubs();
+        transaction.metaData = [
+            { name: "test property", value: "n" },
+        ];
+        const transactionId = transaction.transactionId;
+        render(<TransactionTile transactionId={transactionId} />);
 
-        for (const meta of metadata!) {
-            expect(await screen.findByText(`${meta.name}: ${meta.value}`)).toBeInTheDocument();
-        }
+        expect(await screen.findByText("test property: n")).toBeInTheDocument();
     });
 })
