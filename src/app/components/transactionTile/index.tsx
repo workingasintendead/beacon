@@ -19,7 +19,7 @@ export default function TransactionTile({ transactionId }: { transactionId: stri
             {data ? <>
                 <div>{data.text}</div>
                 <div><span className="font-semibold">Slot: </span>{data.slot}</div>
-                <div><span className="font-semibold">MinBid: </span>{data.minBid.gold}g {data.minBid.silver} silver {data.minBid.copper} copper</div>
+                <div><span className="font-semibold">MinBid: </span>{data.minBid.gold}g {data.minBid.silver}s {data.minBid.copper}c</div>
                     <h3 className="font-semibold">Stats:</h3>
                     <ul className="mb-4">
                         {data.metaData.map((meta, index) => (
