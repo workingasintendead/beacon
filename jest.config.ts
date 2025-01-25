@@ -18,6 +18,8 @@ const config: Config = {
   // Stop running tests after `n` failures
   // bail: 0,
 
+  setupFilesAfterEnv: ['./jest.setup.ts'],
+
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\micha\\AppData\\Local\\Temp\\jest",
 
